@@ -13,6 +13,9 @@ export const RuleDisplayPresenter: Presenter<{
   rule: Rule;
 }, RuleDisplayViewProps> = ({ rule }) => {
   return {
-    title: RULE_TO_TEXT[rule]
+    title: RULE_TO_TEXT[rule],
+    ruleImgSrc: 'src',
+    timeFrom: '12/16 09:00',
+    timeTo: '12/16 11:00',
   }
 };
