@@ -13,6 +13,6 @@ export class ScheduleApplicationService {
   }
 
   fetchAll(): Schedule[] {
-    return this.scheduleRepository.FetchFutureAll();
+    return this.scheduleRepository.fetchFutureAll();
   }
 }
