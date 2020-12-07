@@ -14,7 +14,7 @@ export const RuleDisplayPresenter: Presenter<{
 }, RuleDisplayViewProps> = ({ rule }) => {
   return {
     title: RULE_TO_TEXT[rule],
-    ruleImgSrc: 'src',
+    ruleImgSrc: 'https://gyazo.com/927776100f941aa22e920e98bbe18441/thumb/1000',
     timeFrom: '12/16 09:00',
     timeTo: '12/16 11:00',
   }
