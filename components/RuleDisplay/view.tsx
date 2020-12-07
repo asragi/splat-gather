@@ -40,7 +40,7 @@ export const RuleDisplayView = ({
         .display-container {
           display: flex;
           flex-direction: column;
-          margin: 0 32px;
+          margin-left: 32px;
         }
 
         .time-display {
