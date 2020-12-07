@@ -1,6 +1,8 @@
 import Head from 'next/head'
+import { RuleDisplay } from "../components/RuleDisplay";
 
 export default function Home() {
+  const tmpRule = "splat_zones";
   return (
     <div className="container">
       <Head>
@@ -13,9 +15,7 @@ export default function Home() {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
+        <RuleDisplay rule={tmpRule} />
 
         <div className="grid">
           <a href="https://nextjs.org/docs" className="card">
