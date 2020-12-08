@@ -23,11 +23,24 @@ export const ScheduleView = ({
   renderStages,
   renderParticipantsInfo,
 }: InnerProps) => {
+  const tilt = Math.random() * 6 - 3;
   return (
-    <div>
+    <div className='schedule-card'>
       {renderRule(rule)}
-      {renderStages({firstStageId, secondStageId})}
+      {renderStages({ firstStageId, secondStageId })}
       {renderParticipantsInfo({})}
+
+      <style jsx>{`
+        .schedule-card {
+          display: flex;
+          transform: rotate(${tilt}deg);
+          padding: 12px 24px;
+          border-radius: 8px;
+          background: #212121;
+          color: white;
+          font-weight: bold;
+        }
+      `}</style>
     </div>
   );
 }
