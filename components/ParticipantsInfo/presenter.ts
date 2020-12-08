@@ -1,12 +1,16 @@
+import { Interface } from "readline";
+import { UserData } from "../../application/users/userData";
 import { Presenter } from "../connect";
 import { ParticipantsInfoViewProps } from "./view";
 
-export const ParticipantsInfoPresenter: Presenter<{}, ParticipantsInfoViewProps> = () => {
+export interface ParticipantsInfoPresenterProps {
+  participants: UserData[]
+}
+
+export const ParticipantsInfoPresenter: Presenter<ParticipantsInfoPresenterProps, ParticipantsInfoViewProps> = ({
+  participants
+}: ParticipantsInfoPresenterProps) => {
   return {
-    participants: [
-      {
-        iconSrc: 'https://gyazo.com/927776100f941aa22e920e98bbe18441/thumb/1000'
-      }
-    ]
+    participants
   }
 };

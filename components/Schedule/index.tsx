@@ -1,3 +1,4 @@
+import { UserData } from "../../application/users/userData";
 import { Rule } from "../../domain/valueobjects/rule";
 import { connect } from "../connect";
 import { ParticipantsInfo } from "../ParticipantsInfo";
@@ -8,7 +9,8 @@ import { ScheduleCardPresenter } from "./presenter";
 
 import { ScheduleView as _ScheduleView, ScheduleViewProps } from "./view";
 
-const renderParticipantsInfo = ({ }) => <ParticipantsInfo />;
+const renderParticipantsInfo = (participants: UserData[]) => <ParticipantsInfo participants={participants}/>;
+
 const renderRule = (rule: Rule) => <RuleDisplay rule={rule} />
 const renderStages = ({firstStageId, secondStageId}: StagesInfoPresenterProps) => <StagesInfo
   firstStageId={firstStageId}

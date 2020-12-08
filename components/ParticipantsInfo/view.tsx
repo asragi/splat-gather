@@ -1,7 +1,7 @@
+import { UserData } from '../../application/users/userData';
+
 export interface ParticipantsInfoViewProps {
-  participants: {
-    iconSrc: string;
-  }[]
+  participants: UserData[]
 }
 
 const ICON_SIZE = 32;
