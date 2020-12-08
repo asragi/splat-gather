@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { RuleDisplay } from "../components/RuleDisplay";
+import { ScheduleCard } from '../components/Schedule';
 
 export default function Home() {
   const tmpRule = "splat_zones";
@@ -15,8 +15,7 @@ export default function Home() {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
-        <RuleDisplay rule={tmpRule} />
-
+        <ScheduleCard />
         <div className="grid">
           <a href="https://nextjs.org/docs" className="card">
             <h3>Documentation &rarr;</h3>
