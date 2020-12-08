@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { ScheduleList } from "../components/ScheduleList";
+import {darkGray, gray, stripe} from '../components/color';
 
 export default function Home() {
   return (
@@ -10,10 +11,6 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
         <ScheduleList />
 
         <div className="grid">
@@ -197,7 +194,7 @@ export default function Home() {
           font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
             Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
-          background: repeating-linear-gradient(45deg, #191919, #191919 20px, #202020 20px, #202020 calc(2 * 20px))
+          ${stripe(gray, darkGray)}
         }
 
         * {
