@@ -197,6 +197,7 @@ export default function Home() {
           font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
             Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
+          background: repeating-linear-gradient(45deg, #191919, #191919 20px, #202020 20px, #202020 calc(2 * 20px))
         }
 
         * {
