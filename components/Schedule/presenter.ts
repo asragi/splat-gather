@@ -1,14 +1,21 @@
+import { ScheduleData } from "../../application/schedules/scheduleData";
+import { UserData } from "../../application/users/userData";
 import { Presenter } from "../connect";
 import { ScheduleViewProps } from "./view";
 
-export const ScheduleCardPresenter: Presenter<{
-  
-}, ScheduleViewProps> = ({
+export interface ScheduleCardPresenterProps {
+  schedule: ScheduleData;
+  participants: UserData[]
+}
 
+export const ScheduleCardPresenter: Presenter<ScheduleCardPresenterProps, ScheduleViewProps> = ({
+  schedule,
+  participants
 }) => {
   return {
-    rule: 'clam_blitz',
-    firstStageId: 3,
-    secondStageId: 5
+    rule: schedule.rule,
+    firstStageId: schedule.stageIds[0],
+    secondStageId: schedule.stageIds[1],
+    participants
   };
 };
