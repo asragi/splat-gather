@@ -11,7 +11,6 @@ export const RuleDisplayView = ({
   timeFrom,
   timeTo,
 }: RuleDisplayViewProps) => {
-  const tilt = Math.random() * 6 - 3;
   return (
     <div className='rule-display-container'>
       <div className='img-container'><img src={ruleImgSrc} /></div>
@@ -27,12 +26,6 @@ export const RuleDisplayView = ({
       <style jsx>{`
         .rule-display-container {
           display: flex;
-          transform: rotate(${tilt}deg);
-          padding: 12px 24px;
-          border-radius: 8px;
-          background: #212121;
-          color: white;
-          font-weight: bold;
         }
 
         .img-container {
