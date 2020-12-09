@@ -12,15 +12,16 @@ export class ScheduleApplicationService {
     Object.assign(this, props);
   }
 
-  fetchAll(): ScheduleData[] {
+  fetchAll(): Promise<ScheduleData[]> {
     const schedules = this.scheduleRepository.fetchFutureAll();
-    return schedules.map((schedule) => {
+    return schedules.then((scheduleSet) => {
+      return scheduleSet.map((schedule) => {
       return {
         scheduleId: schedule.scheduleId.id,
         rule: schedule.rule,
         start: new Date('2020/12/16 09:00:00'),
         stageIds: [2, 4],
-      }
+      }});
     });
   }
 }
