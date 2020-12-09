@@ -1,10 +1,9 @@
 import Head from 'next/head'
 import { ScheduleList } from "../components/ScheduleList";
 import { darkGray, gray, stripe } from '../components/color';
-import { fetchSchedules } from "../hooks/fetchSchedules";
 
 export default function Home() {
-  // const scheduleData = fetchSchedules();
+  console.log('HOME');
   return (
     <div className="container">
       <Head>
@@ -13,7 +12,7 @@ export default function Home() {
       </Head>
 
       <main>
-        { /* <ScheduleList schedules={scheduleData}/> */ }
+        <ScheduleList />
 
         <div className="grid">
           <a href="https://nextjs.org/docs" className="card">
