@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { ScheduleList } from "../components/ScheduleList";
-import {darkGray, gray, stripe} from '../components/color';
+import { darkGray, gray, stripe } from '../components/color';
 
 export default function Home() {
   return (
