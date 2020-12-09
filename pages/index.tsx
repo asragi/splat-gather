@@ -3,7 +3,6 @@ import { ScheduleList } from "../components/ScheduleList";
 import { darkGray, gray, stripe } from '../components/color';
 
 export default function Home() {
-  console.log('HOME');
   return (
     <div className="container">
       <Head>
