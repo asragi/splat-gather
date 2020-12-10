@@ -11,10 +11,11 @@ export interface ScheduleViewProps {
   colorA: string;
   colorB: string;
   tilt: number;
+  start: Date;
 }
 
 interface InnerProps extends ScheduleViewProps {
-  renderRule: React.FC<RuleType>;
+  renderRule: React.FC<{ rule: RuleType, start: Date }>;
   renderStages: React.FC<StagesInfoPresenterProps>;
   renderParticipantsInfo: React.FC<UserData[]>;
 }
@@ -28,6 +29,7 @@ export const ScheduleView = ({
   colorA,
   colorB,
   tilt,
+  start,
 
   renderRule,
   renderStages,
@@ -35,7 +37,7 @@ export const ScheduleView = ({
 }: InnerProps) => {
   return (
     <div className='schedule-card'>
-      {renderRule(rule)}
+      {renderRule({ rule, start })}
       {renderStages({ firstStageId, secondStageId })}
       {renderParticipantsInfo(participants)}
 
