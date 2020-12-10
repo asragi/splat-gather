@@ -13,7 +13,7 @@ export const ScheduleCardPresenter: Presenter<ScheduleCardPresenterProps, Schedu
   schedule,
   participants
 }) => {
-  const { rule } = schedule;
+  const { rule, start } = schedule;
   const tilt = Math.random() * 6 - 3;
   const { colorA, colorB } = colorByRule(rule);
   return {
@@ -24,5 +24,6 @@ export const ScheduleCardPresenter: Presenter<ScheduleCardPresenterProps, Schedu
     tilt,
     colorA,
     colorB,
+    start
   };
 };

@@ -19,8 +19,8 @@ export class ScheduleApplicationService {
       return {
         scheduleId: schedule.scheduleId.id,
         rule: schedule.rule,
-        start: new Date('2020/12/16 09:00:00'),
-        stageIds: [2, 4],
+        start: schedule.start,
+        stageIds: schedule.stageIds.stageIds,
       }});
     });
   }

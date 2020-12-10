@@ -9,13 +9,18 @@ const RULE_TO_TEXT = {
   'tower_control': 'ガチヤグラ',
 };
 
+const date2string = (date: Date, offsetHour: number): string => {
+  return `${1 + date.getMonth()}/${date.getDay()} ${(date.getHours() + offsetHour) % 24}:00`;
+};
+
 export const RuleDisplayPresenter: Presenter<{
   rule: Rule;
-}, RuleDisplayViewProps> = ({ rule }) => {
+  start: Date;
+}, RuleDisplayViewProps> = ({ rule, start }) => {
   return {
     title: RULE_TO_TEXT[rule],
     ruleImgSrc: 'https://gyazo.com/927776100f941aa22e920e98bbe18441/thumb/1000',
-    timeFrom: '12/16 09:00',
-    timeTo: '12/16 11:00',
+    timeFrom: date2string(start, 0),
+    timeTo: date2string(start, 2),
   }
 };
