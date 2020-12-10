@@ -1,25 +1,44 @@
 import { UserData } from '../../application/users/userData';
 
 export interface ParticipantsInfoViewProps {
-  participants: UserData[]
+  participants: UserData[],
+  buttonOnClick: () => void,
+  buttonText: string,
+}
+
+interface InnerProps extends ParticipantsInfoViewProps {
+  renderJoinButton: React.FC<{ onClick: () => void, text: string }>;
 }
 
 const ICON_SIZE = 32;
 
 export const ParticipantsInfoView = ({
-  participants
-}: ParticipantsInfoViewProps) => {
+  participants,
+  buttonOnClick,
+  buttonText,
+
+  renderJoinButton,
+}: InnerProps) => {
   return (
-    <div className='participants-info'>
-      {participants.map((person) => {
-        return (
-          <img 
-            src={person.iconSrc}
-            key={person.iconSrc}
-            className='participants-icon'
-          />
-        );
-      })}
+    <div className='participants-info-container'>
+      <div className='participants-info'>
+        {participants.map((person) => {
+          return (
+            <img
+              src={person.iconSrc}
+              key={person.iconSrc}
+              className='participants-icon'
+            />
+          );
+        })}
+      </div>
+      <div className='button-container'>
+        {
+          renderJoinButton({
+            onClick: buttonOnClick,
+            text: buttonText
+          })}
+      </div>
 
       <style jsx>{`
         .participants-info {
