@@ -41,15 +41,27 @@ export const ParticipantsInfoView = ({
       </div>
 
       <style jsx>{`
+        .participants-info-container {
+          display: flex;
+          flex-direction: column;
+          margin-left: 32px;
+        }
+
         .participants-info {
           display: flex;
           align-items: center;
-          margin-left: 32px;
           width: 200px;
+          flex-grow: 1;
         }
 
         .participants-icon {
           width: ${ICON_SIZE}px;
+        }
+
+        .button-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
       `}</style>
     </div>

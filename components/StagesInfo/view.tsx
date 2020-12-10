@@ -17,6 +17,7 @@ export const StagesInfoView = ({
           display:flex;
           flex-direction: column;
           margin-left: 32px;
+          width: 180px;
         }
 
         .stage-name {
