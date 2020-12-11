@@ -16,7 +16,6 @@ const renderMain = (loggedIn: boolean, loading: boolean, env: string) => {
   const mainComponent = <ScheduleList />;
   const loadingComponent = <div>Loading...</div>;
   const signInComponent = <button onClick={() => signIn('slack')}>Sign in</button>;
-  console.log(env);
   if (env === 'preview') {
     return mainComponent;
   }

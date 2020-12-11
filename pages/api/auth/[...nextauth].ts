@@ -6,7 +6,6 @@ const callbacks: Callbacks = {
   signIn: async (user, account, metadata) => {
     if (!metadata || !metadata.ok) return false;
     const { name, id, email, image_24, image_32, image_48, image_72, image_192, image_512 } = metadata.user;
-    console.log(`${name}:${id}`);
     return true;
   }
 };
