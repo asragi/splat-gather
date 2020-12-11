@@ -3,6 +3,22 @@ import { signIn, signOut, useSession } from "next-auth/client";
 import { ScheduleList } from "../components/ScheduleList";
 import { darkGray, gray, stripe } from '../components/color';
 
+const renderMain = (loggedIn: boolean, loading: boolean) => {
+  const mainComponent = <ScheduleList />;
+  const loadingComponent = <div>Loading...</div>;
+  const signInComponent = <button onClick={() => signIn('slack')}>Sign in</button>;
+  if (process.env.VERCEL_ENV === 'preview') {
+    return mainComponent;
+  }
+  if (loading) {
+    return loadingComponent;
+  }
+  if (!loggedIn) {
+    return signInComponent;
+  }
+  return mainComponent;
+}
+
 export default function Home() {
   const [session, loading] = useSession();
   return (
@@ -13,9 +29,7 @@ export default function Home() {
       </Head>
 
       <main>
-        {
-          loading ? <div>Loading...</div> : !session ? <button onClick={() => signIn('slack')}>Sign in</button> : <ScheduleList />
-        }
+        {renderMain(!!session, loading)}
       </main>
 
       <footer>
