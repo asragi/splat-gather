@@ -3,7 +3,7 @@ import { signIn, signOut, useSession } from "next-auth/client";
 import { ScheduleList } from "../components/ScheduleList";
 import { darkGray, gray, stripe } from '../components/color';
 
-export async function getServerSideProps(context) {
+export async function getStaticProps() {
   const env: string = !!process.env.VERCEL_ENV ? process.env.VERCEL_ENV : '';
   return {
     props: {
