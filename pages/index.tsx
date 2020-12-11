@@ -1,8 +1,10 @@
 import Head from 'next/head'
+import { signIn, signOut, useSession } from "next-auth/client";
 import { ScheduleList } from "../components/ScheduleList";
 import { darkGray, gray, stripe } from '../components/color';
 
 export default function Home() {
+  const [session, loading] = useSession();
   return (
     <div className="container">
       <Head>
@@ -11,18 +13,15 @@ export default function Home() {
       </Head>
 
       <main>
-        <ScheduleList />
+        {
+          loading ? <div>Loading...</div> : !session ? <button onClick={() => signIn()}>Sign in</button> : <ScheduleList />
+        }
       </main>
 
       <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
+        {
+          session && <button onClick={() => signOut()}>Sign out</button>
+        }
       </footer>
 
       <style jsx>{`
