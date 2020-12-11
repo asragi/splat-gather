@@ -21,6 +21,7 @@ const renderMain = (loggedIn: boolean, loading: boolean) => {
 
 export default function Home() {
   const [session, loading] = useSession();
+  console.log(process.env.VERCEL_ENV);
   return (
     <div className="container">
       <Head>
