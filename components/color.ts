@@ -14,6 +14,9 @@ export const blue = '#4110b9';
 export const lightGreen = '#16d718';
 export const green = '#1ec517';
 
+export const lightLeague = '#e902b0';
+export const league = '#af019e';
+
 export const gray = '#191919';
 export const darkGray = '#202020';
 
