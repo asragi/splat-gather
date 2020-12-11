@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { signIn, signOut, useSession } from "next-auth/client";
+import { Layout } from "../components/Layout";
 import { ScheduleList } from "../components/ScheduleList";
 import { darkGray, gray, stripe } from '../components/color';
 
@@ -31,23 +32,24 @@ const renderMain = (loggedIn: boolean, loading: boolean, env: string) => {
 export default function Home({ env }) {
   const [session, loading] = useSession();
   return (
-    <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Layout>
+      <div className="container">
+        <Head>
+          <title>Create Next App</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-      <main>
-        {renderMain(!!session, loading, env)}
-      </main>
+        <main>
+          {renderMain(!!session, loading, env)}
+        </main>
 
-      <footer>
-        {
-          session && <button onClick={() => signOut()}>Sign out</button>
-        }
-      </footer>
+        <footer>
+          {
+            session && <button onClick={() => signOut()}>Sign out</button>
+          }
+        </footer>
 
-      <style jsx>{`
+        <style jsx>{`
         .container {
           min-height: 100vh;
           padding: 0 0.5rem;
@@ -178,7 +180,7 @@ export default function Home({ env }) {
         }
       `}</style>
 
-      <style jsx global>{`
+        <style jsx global>{`
         html,
         body {
           padding: 0;
@@ -193,6 +195,7 @@ export default function Home({ env }) {
           box-sizing: border-box;
         }
       `}</style>
-    </div>
+      </div>
+    </Layout>
   )
 }
