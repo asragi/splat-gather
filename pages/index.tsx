@@ -1,8 +1,35 @@
 import Head from 'next/head'
+import { signIn, signOut, useSession } from "next-auth/client";
 import { ScheduleList } from "../components/ScheduleList";
 import { darkGray, gray, stripe } from '../components/color';
 
-export default function Home() {
+export async function getServerSideProps(context) {
+  const env: string = !!process.env.VERCEL_ENV ? process.env.VERCEL_ENV : '';
+  return {
+    props: {
+      env
+    }
+  }
+}
+
+const renderMain = (loggedIn: boolean, loading: boolean, env: string) => {
+  const mainComponent = <ScheduleList />;
+  const loadingComponent = <div>Loading...</div>;
+  const signInComponent = <button onClick={() => signIn('slack')}>Sign in</button>;
+  if (env === 'preview') {
+    return mainComponent;
+  }
+  if (loading) {
+    return loadingComponent;
+  }
+  if (!loggedIn) {
+    return signInComponent;
+  }
+  return mainComponent;
+}
+
+export default function Home({ env }) {
+  const [session, loading] = useSession();
   return (
     <div className="container">
       <Head>
@@ -11,18 +38,13 @@ export default function Home() {
       </Head>
 
       <main>
-        <ScheduleList />
+        {renderMain(!!session, loading, env)}
       </main>
 
       <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
+        {
+          session && <button onClick={() => signOut()}>Sign out</button>
+        }
       </footer>
 
       <style jsx>{`
