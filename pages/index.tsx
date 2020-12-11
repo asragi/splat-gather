@@ -3,11 +3,21 @@ import { signIn, signOut, useSession } from "next-auth/client";
 import { ScheduleList } from "../components/ScheduleList";
 import { darkGray, gray, stripe } from '../components/color';
 
-const renderMain = (loggedIn: boolean, loading: boolean) => {
+export async function getServerSideProps(context) {
+  const env: string = !!process.env.VERCEL_ENV ? process.env.VERCEL_ENV : '';
+  return {
+    props: {
+      env
+    }
+  }
+}
+
+const renderMain = (loggedIn: boolean, loading: boolean, env: string) => {
   const mainComponent = <ScheduleList />;
   const loadingComponent = <div>Loading...</div>;
   const signInComponent = <button onClick={() => signIn('slack')}>Sign in</button>;
-  if (process.env.VERCEL_ENV === 'preview') {
+  console.log(env);
+  if (env === 'preview') {
     return mainComponent;
   }
   if (loading) {
@@ -19,9 +29,8 @@ const renderMain = (loggedIn: boolean, loading: boolean) => {
   return mainComponent;
 }
 
-export default function Home() {
+export default function Home({ env }) {
   const [session, loading] = useSession();
-  console.log(process.env.VERCEL_ENV);
   return (
     <div className="container">
       <Head>
@@ -30,7 +39,7 @@ export default function Home() {
       </Head>
 
       <main>
-        {renderMain(!!session, loading)}
+        {renderMain(!!session, loading, env)}
       </main>
 
       <footer>
