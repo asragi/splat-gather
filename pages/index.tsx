@@ -14,7 +14,7 @@ export default function Home() {
 
       <main>
         {
-          loading ? <div>Loading...</div> : !session ? <button onClick={() => signIn()}>Sign in</button> : <ScheduleList />
+          loading ? <div>Loading...</div> : !session ? <button onClick={() => signIn('slack')}>Sign in</button> : <ScheduleList />
         }
       </main>
 
